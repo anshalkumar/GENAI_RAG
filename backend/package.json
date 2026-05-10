@@ -17,7 +17,7 @@
     "@langchain/google-genai": "^2.1.30",
     "cors": "^2.8.6",
     "d3-dsv": "^3.0.1",
-    "dotenv": "^17.4.2",
+    "dotenv": "^16.4.5",
     "express": "^5.2.1",
     "hnswlib-node": "^3.0.0",
     "langchain": "^1.4.0",

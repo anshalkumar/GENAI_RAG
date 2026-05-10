@@ -34,7 +34,8 @@ const ChatPhase = () => {
     setIsLoading(true);
 
     try {
-      const response = await axios.post('http://localhost:5001/api/chat', { 
+      const apiUrl = import.meta.env.VITE_API_URL || 'http://localhost:5001';
+      const response = await axios.post(`${apiUrl}/api/chat`, { 
         query: userMessage,
         history: history
       });
