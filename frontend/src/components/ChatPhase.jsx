@@ -34,7 +34,7 @@ const ChatPhase = () => {
     setIsLoading(true);
 
     try {
-      const apiUrl = import.meta.env.VITE_API_URL || 'http://localhost:5001';
+      const apiUrl = import.meta.env.VITE_API_URL || 'https://genai-rag.onrender.com';
       const response = await axios.post(`${apiUrl}/api/chat`, { 
         query: userMessage,
         history: history

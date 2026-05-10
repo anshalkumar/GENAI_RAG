@@ -63,7 +63,7 @@ const UploadPhase = ({ onUploadSuccess }) => {
     formData.append('file', file);
 
     try {
-      const apiUrl = import.meta.env.VITE_API_URL || 'http://localhost:5001';
+      const apiUrl = import.meta.env.VITE_API_URL || 'https://genai-rag.onrender.com';
       await axios.post(`${apiUrl}/api/upload`, formData, {
         headers: {
           'Content-Type': 'multipart/form-data'
