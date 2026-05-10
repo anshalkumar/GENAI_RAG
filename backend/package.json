@@ -1,0 +1,28 @@
+{
+  "name": "backend",
+  "version": "1.0.0",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js",
+    "build": "echo \"No build step required\""
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "description": "",
+  "type": "module",
+  "dependencies": {
+    "@langchain/community": "^1.1.28",
+    "@langchain/google-genai": "^2.1.30",
+    "cors": "^2.8.6",
+    "d3-dsv": "^3.0.1",
+    "dotenv": "^17.4.2",
+    "express": "^5.2.1",
+    "hnswlib-node": "^3.0.0",
+    "langchain": "^1.4.0",
+    "mammoth": "^1.12.0",
+    "multer": "^2.1.1",
+    "pdf-parse": "^2.4.5"
+  }
+}
