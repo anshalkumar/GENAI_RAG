@@ -19,6 +19,7 @@
     "cors": "^2.8.6",
     "d3-dsv": "^3.0.1",
     "dotenv": "^16.4.5",
+    "duck-duck-scrape": "^2.2.7",
     "express": "^5.2.1",
     "hnswlib-node": "^3.0.0",
     "langchain": "^1.4.0",
