@@ -1,7 +1,7 @@
 import express from 'express';
 import { GoogleGenerativeAIEmbeddings, ChatGoogleGenerativeAI } from '@langchain/google-genai';
 import { HNSWLib } from '@langchain/community/vectorstores/hnswlib';
-import { TavilySearchResults } from "@langchain/community/tools/tavily_search";
+import { DuckDuckGoSearch } from "@langchain/community/tools/duckduckgo_search";
 import { z } from "zod";
 import path from 'path';
 import fs from 'fs';
@@ -67,24 +67,15 @@ Give a binary score 'yes' or 'no' score to indicate whether the document is rele
     let isFromWeb = false;
 
     if (relevantChunks.length === 0) {
-      console.log("No relevant chunks found in document. Falling back to web search.");
-      const tavilyKey = process.env.TAVILY_API_KEY;
-      if (tavilyKey) {
-        try {
-          const tool = new TavilySearchResults({
-            maxResults: 3,
-            apiKey: tavilyKey,
-          });
-          const searchResults = await tool.invoke(query);
-          finalContext = searchResults; // String output from Tavily tool invoke
-          isFromWeb = true;
-        } catch (e) {
-          console.error("Tavily search error:", e);
-          finalContext = "No relevant context found in document, and web search failed due to an error.";
-        }
-      } else {
-        console.warn("TAVILY_API_KEY not found in environment. Web search skipped.");
-        finalContext = "No relevant context found in the uploaded document, and web search is not configured.";
+      console.log("No relevant chunks found in document. Falling back to web search (DuckDuckGo).");
+      try {
+        const tool = new DuckDuckGoSearch({ maxResults: 3 });
+        const searchResults = await tool.invoke(query);
+        finalContext = searchResults; // String output from tool invoke
+        isFromWeb = true;
+      } catch (e) {
+        console.error("DuckDuckGo search error:", e);
+        finalContext = "No relevant context found in document, and web search failed due to an error.";
       }
     } else {
       finalContext = relevantChunks.join("\n\n");
